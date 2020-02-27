@@ -15,7 +15,7 @@
              ````
 1. Запустить SUT в третьем терминале командой:
             ````
-            java -jar aqa-shop.jar
+            java -jar aqa-shop.jar -P:profile=test
             ````
 1. Запустить автотесты командой:
             ````
