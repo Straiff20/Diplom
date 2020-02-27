@@ -2,13 +2,13 @@ package PageObjects;
 
 import com.codeborne.selenide.Condition;
 
-public class AfterChoosePayment extends TravelOfDayPageObject {
+public class AfterChoosePaymentPageObject extends TravelOfDayPageObject {
 
     public static final int DebitCard = 0;
     public static final int CreditCard = 1;
 
     int type;
-    public AfterChoosePayment(int type) {
+    public AfterChoosePaymentPageObject(int type) {
         super();
         this.type = type;
         Constant.BY_CARD_TITLE.waitUntil(Condition.visible, 1000);
