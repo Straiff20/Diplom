@@ -1,4 +1,4 @@
-import Data.FakerData;
+import Data.ValidData;
 import Data.ForApiDTO;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
@@ -7,7 +7,7 @@ import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
-
+//TODO: сделать методы для запроса, чтобы тесты были меньше
 public class APITest {
     private static RequestSpecification requestSpec = new RequestSpecBuilder()
             .setBaseUri("http://localhost")
@@ -22,10 +22,10 @@ public class APITest {
         given()
                 .spec(requestSpec)
                 .body(new ForApiDTO("4444 4444 4444 4441",
-                        Integer.parseInt(FakerData.getRandomMonth()),
-                        Integer.parseInt(FakerData.getRandomYear()),
-                        FakerData.getRandomOwner(),
-                        Integer.parseInt(FakerData.getRandomCVCCode())))
+                        Integer.parseInt(ValidData.getRandomMonth()),
+                        Integer.parseInt(ValidData.getRandomYear()),
+                        ValidData.getRandomOwner(),
+                        Integer.parseInt(ValidData.getRandomCVCCode())))
                 .when()
                 .post("/payment")
                 .then()
@@ -37,10 +37,10 @@ public class APITest {
         given()
                 .spec(requestSpec)
                 .body(new ForApiDTO("4444 4444 4444 4442",
-                        Integer.parseInt(FakerData.getRandomMonth()),
-                        Integer.parseInt(FakerData.getRandomYear()),
-                        FakerData.getRandomOwner(),
-                        Integer.parseInt(FakerData.getRandomCVCCode())))
+                        Integer.parseInt(ValidData.getRandomMonth()),
+                        Integer.parseInt(ValidData.getRandomYear()),
+                        ValidData.getRandomOwner(),
+                        Integer.parseInt(ValidData.getRandomCVCCode())))
                 .when()
                 .post("/payment")
                 .then()
@@ -52,10 +52,10 @@ public class APITest {
         given()
                 .spec(requestSpec)
                 .body(new ForApiDTO("4444 4444 4444 4441",
-                        Integer.parseInt(FakerData.getRandomMonth()),
-                        Integer.parseInt(FakerData.getRandomYear()),
-                        FakerData.getRandomOwner(),
-                        Integer.parseInt(FakerData.getRandomCVCCode())))
+                        Integer.parseInt(ValidData.getRandomMonth()),
+                        Integer.parseInt(ValidData.getRandomYear()),
+                        ValidData.getRandomOwner(),
+                        Integer.parseInt(ValidData.getRandomCVCCode())))
                 .when()
                 .post("/credit")
                 .then()
@@ -67,10 +67,10 @@ public class APITest {
         given()
                 .spec(requestSpec)
                 .body(new ForApiDTO("4444 4444 4444 4442",
-                        Integer.parseInt(FakerData.getRandomMonth()),
-                        Integer.parseInt(FakerData.getRandomYear()),
-                        FakerData.getRandomOwner(),
-                        Integer.parseInt(FakerData.getRandomCVCCode())))
+                        Integer.parseInt(ValidData.getRandomMonth()),
+                        Integer.parseInt(ValidData.getRandomYear()),
+                        ValidData.getRandomOwner(),
+                        Integer.parseInt(ValidData.getRandomCVCCode())))
                 .when()
                 .post("/credit")
                 .then()
@@ -82,10 +82,10 @@ public class APITest {
         given()
                 .spec(requestSpec)
                 .body(new ForApiDTO("5555 5555 5555 5555",
-                        Integer.parseInt(FakerData.getRandomMonth()),
-                        Integer.parseInt(FakerData.getRandomYear()),
-                        FakerData.getRandomOwner(),
-                        Integer.parseInt(FakerData.getRandomCVCCode())))
+                        Integer.parseInt(ValidData.getRandomMonth()),
+                        Integer.parseInt(ValidData.getRandomYear()),
+                        ValidData.getRandomOwner(),
+                        Integer.parseInt(ValidData.getRandomCVCCode())))
                 .when()
                 .post("/payment")
                 .then()
@@ -97,10 +97,10 @@ public class APITest {
         given()
                 .spec(requestSpec)
                 .body(new ForApiDTO("5555 5555 5555 5555",
-                        Integer.parseInt(FakerData.getRandomMonth()),
-                        Integer.parseInt(FakerData.getRandomYear()),
-                        FakerData.getRandomOwner(),
-                        Integer.parseInt(FakerData.getRandomCVCCode())))
+                        Integer.parseInt(ValidData.getRandomMonth()),
+                        Integer.parseInt(ValidData.getRandomYear()),
+                        ValidData.getRandomOwner(),
+                        Integer.parseInt(ValidData.getRandomCVCCode())))
                 .when()
                 .post("/credit")
                 .then()

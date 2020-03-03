@@ -5,8 +5,8 @@ import com.github.javafaker.Faker;
 import java.util.Locale;
 import java.util.Random;
 
-public class FakerData {
-    private FakerData() {
+public class ValidData {
+    private ValidData() {
     }
 
     //  Карта с approved
