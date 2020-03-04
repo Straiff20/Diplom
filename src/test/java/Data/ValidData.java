@@ -19,6 +19,11 @@ public class ValidData {
         return new CardNumber("4444 4444 4444 4442", "DECLINED");
     }
 
+    // некорректная карта
+    public static CardNumber invalidCard() {
+        return new CardNumber("1111 1111 1111 1111", "");
+    }
+
     //  Получить поля
     public static CardFields getCardFields() {
         String month = getRandomMonth();
@@ -80,6 +85,14 @@ public class ValidData {
         public CardNumber(String cardNumber, String status) {
             this.cardNumber = cardNumber;
             this.status = status;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public String getCardNumber() {
+            return cardNumber;
         }
     }
 }

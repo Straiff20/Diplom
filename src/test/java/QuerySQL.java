@@ -1,7 +1,7 @@
 import java.sql.*;
 
 public class QuerySQL {
-    public static String getStatusFromMySQL() throws SQLException {
+    public static String getStatusFromMySQL(String id) throws SQLException {
         String selectStatus = "SELECT * FROM credit_request_entity STATUS by created DESC LIMIT 1";
 
         try (
@@ -24,4 +24,5 @@ public class QuerySQL {
             return cardStatus.getString("status");
         }
     }
+
 }
