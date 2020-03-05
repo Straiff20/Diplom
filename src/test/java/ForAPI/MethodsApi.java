@@ -9,6 +9,10 @@ import io.restassured.specification.RequestSpecification;
 import static io.restassured.RestAssured.given;
 
 public class MethodsApi {
+
+    public static final int payment = 0;
+    public static final int credit = 1;
+
     private static RequestSpecification requestSpec = new RequestSpecBuilder()
             .setBaseUri("http://localhost")
             .setPort(9999)
@@ -20,7 +24,18 @@ public class MethodsApi {
     private MethodsApi() {
     }
 
-    public static ValidatableResponse payRequest(FieldsApiDTO apiDTO, String url) {
+    public static ValidatableResponse payRequest(FieldsApiDTO apiDTO, int typeConnection) throws Exception {
+        String url;
+        if (typeConnection == payment) {
+            url = "/payment";
+
+        } else if (typeConnection == credit) {
+            url = "/credit";
+        }
+        else
+        {
+            throw new Exception();
+        }
         return given()
                 .spec(requestSpec)
                 .body(apiDTO)
