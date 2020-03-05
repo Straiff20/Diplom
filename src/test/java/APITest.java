@@ -1,4 +1,4 @@
-import Data.ValidData;
+import Data.DataInfo;
 import ForAPI.FieldsApiDTO;
 import ForAPI.MethodsApi;
 import io.restassured.matcher.ResponseAwareMatcher;
@@ -13,10 +13,10 @@ public class APITest {
     @CsvFileSource(resources = "/RequestDataApi.csv", numLinesToSkip = 1)
     void paymentApprovedCardTest(String number, int typeConnection, int statusCode, String status) throws Exception {
         FieldsApiDTO fieldsApiDTO = new FieldsApiDTO(number,
-                Integer.parseInt(ValidData.getRandomMonth()),
-                Integer.parseInt(ValidData.getRandomYear()),
-                ValidData.getRandomOwner(),
-                Integer.parseInt(ValidData.getRandomCVCCode()));
+                Integer.parseInt(DataInfo.getRandomMonth()),
+                Integer.parseInt(DataInfo.getRandomYear()),
+                DataInfo.getRandomOwner(),
+                Integer.parseInt(DataInfo.getRandomCVCCode()));
 
         ValidatableResponse response = MethodsApi.payRequest(fieldsApiDTO, typeConnection);
         response.statusCode(statusCode);

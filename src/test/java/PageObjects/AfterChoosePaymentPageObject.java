@@ -11,12 +11,12 @@ public class AfterChoosePaymentPageObject extends TravelOfDayPageObject {
     public AfterChoosePaymentPageObject(int type) {
         super();
         this.type = type;
-        Constant.BY_CARD_TITLE.waitUntil(Condition.visible, 1000);
+        Constant.PAYMENT_CARD_TITLE.waitUntil(Condition.visible, 1000);
 
         if(this.type == DebitCard)
         {
             //проверить заголовок (Оплата по карте)
-            Constant.BY_CARD_TITLE.shouldHave(Condition.text("Оплата по карте"));
+            Constant.PAYMENT_CARD_TITLE.shouldHave(Condition.text("Оплата по карте"));
         }
         else if(this.type == CreditCard)
         {

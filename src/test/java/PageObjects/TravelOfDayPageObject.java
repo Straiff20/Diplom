@@ -10,17 +10,17 @@ public class TravelOfDayPageObject {
         Constant.TITLE.waitUntil(Condition.visible, 10000);
         Constant.PROMO_PHOTO.isDisplayed();
         Constant.COUNTRY.isDisplayed();
-        Constant.BUY_BUTTON.isDisplayed();
-        Constant.BUY_CREDIT_BUTTON.isDisplayed();
+        Constant.PAYMENT_BUTTON.isDisplayed();
+        Constant.CREDIT_BUTTON.isDisplayed();
     }
 
     public AfterChoosePaymentPageObject buyButtonClick() {
-        Constant.BUY_BUTTON.click();
+        Constant.PAYMENT_BUTTON.click();
         return new AfterChoosePaymentPageObject(AfterChoosePaymentPageObject.DebitCard);
     }
 
     public AfterChoosePaymentPageObject buyCreditButtonClick() {
-        Constant.BUY_CREDIT_BUTTON.click();
+        Constant.CREDIT_BUTTON.click();
         return new AfterChoosePaymentPageObject(AfterChoosePaymentPageObject.CreditCard);
     }
 }

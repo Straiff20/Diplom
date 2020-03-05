@@ -5,25 +5,9 @@ import com.github.javafaker.Faker;
 import java.util.Locale;
 import java.util.Random;
 
-public class ValidData {
-    private ValidData() {
+public class DataInfo {
+    private DataInfo() {
     }
-
-    //  Карта с approved
-    public static CardNumber approvedCard() {
-        return new CardNumber("4444 4444 4444 4441", "APPROVED");
-    }
-
-    //  карта с declined
-    public static CardNumber declinedCard() {
-        return new CardNumber("4444 4444 4444 4442", "DECLINED");
-    }
-
-    // некорректная карта
-    public static CardNumber invalidCard() {
-        return new CardNumber("1111 1111 1111 1111", "");
-    }
-
     //  Получить поля
     public static CardFields getCardFields() {
         String month = getRandomMonth();
@@ -33,7 +17,6 @@ public class ValidData {
         return new CardFields(month, year, owner, cvcCode);
     }
 
-    //  Получить случайный месяц
     public static String getRandomMonth() {
         String[] months = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
         Random random = new Random();
@@ -41,7 +24,6 @@ public class ValidData {
         return months[index];
     }
 
-    //  Получить случайный близайший год
     public static String getRandomYear() {
         String[] years = {"20", "21", "22", "23"};
         Random random = new Random();
@@ -49,20 +31,17 @@ public class ValidData {
         return years[index];
     }
 
-    //  Сгенерировать имя латинницей
     public static String getRandomOwner() {
         Faker faker = new Faker(new Locale("us"));
         return faker.name().firstName() + " " + faker.name().lastName();
     }
 
-    //  Сгенерировать cvc-code
     public static String getRandomCVCCode() {
         Random random = new Random();
         int rnd = random.nextInt(900) + 100;
         return Integer.toString(rnd);
     }
 
-    //  Класс с данными карты
     public static class CardFields {
         private String month;
         private String year;
@@ -74,25 +53,6 @@ public class ValidData {
             this.year = year;
             this.owner = owner;
             this.cvcCode = cvcCode;
-        }
-    }
-
-    //  Класс с картами
-    public static class CardNumber {
-        private String cardNumber;
-        private String status;
-
-        public CardNumber(String cardNumber, String status) {
-            this.cardNumber = cardNumber;
-            this.status = status;
-        }
-
-        public String getStatus() {
-            return status;
-        }
-
-        public String getCardNumber() {
-            return cardNumber;
         }
     }
 }
