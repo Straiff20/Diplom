@@ -15,9 +15,10 @@ environment:
 
     - db: mysql
       provider: mysql
+      ps: mysql ArgumentList "-u root -pPassword12! -e 'CREATE DATABASE app'"
 
-    - db: postgresql
-      provider: postgresql
+#    - db: postgresql
+#      provider: postgresql
 
 services:
   - mysql               # start MySQL 5.6 service
@@ -25,7 +26,6 @@ services:
 
 install:
   # запускаем SUT (запоминаем информацию о процессе в переменной $App)
-  - ps: $App = Start-Process -FilePath java -ArgumentList "-jar ./artifacts/aqa-shop.jar" -PassThru
   # Get the latest stable version of Node 0.STABLE.latest
 
   #- set PATH=%APPDATA%\npm;%PATH%
@@ -34,6 +34,9 @@ install:
   #- ps: $App = Start-Process -FilePath npm -ArgumentList "start" -PassThru
 
 build_script:
+  - ps: $App = Start-Process -FilePath java -ArgumentList "-jar ./artifacts/aqa-shop.jar" -PassThru
+
+test_script:
   - ps: ./gradlew test --info "-Dselenide.headless=true"  # стартуем Selenide в Headless-режиме (см.ниже)
 
 on_finish:
