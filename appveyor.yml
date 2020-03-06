@@ -1,0 +1,23 @@
+image: Ubuntu1804  # образ для сборки
+
+branches:
+  only:
+    - master  # ветка git
+
+build: off  # будем использовать свой скрипт сборки
+
+environment:
+  nodejs_version: "6"
+
+install:
+  # запускаем SUT (запоминаем информацию о процессе в переменной $App)
+  - ps: $App = Start-Process -FilePath java -ArgumentList "-jar ./artifacts/aqa-shop.jar" -PassThru
+  - ps: Install-Product node $env:nodejs_version
+  - npm install
+  - ps: $App = Start-Process -FilePath npm -ArgumentList "start" -PassThru
+
+build_script:
+  - ps: ./gradlew test --info "-Dselenide.headless=true"  # стартуем Selenide в Headless-режиме (см.ниже)
+
+on_finish:
+  - ps: Stop-Process -Id $App.Id  # оставливаем SUT
