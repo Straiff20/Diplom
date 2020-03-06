@@ -7,34 +7,31 @@ branches:
 build: off  # будем использовать свой скрипт сборки
 
 environment:
+
+  #nodejs_version: "12"
+
   matrix:
     # node.js
-    #- nodejs_version: "0.8"
-    #- nodejs_version: "0.10"
-    #- nodejs_version: "0.12"
-    #- nodejs_version: "4"
-    #- nodejs_version: "5"
-    #- nodejs_version: "6"
-    #- nodejs_version: "7"
-    #- nodejs_version: "8"
-    #- nodejs_version: "9"
-    #- nodejs_version: "10"
-    #- nodejs_version: "11"
-    #- nodejs_version: "12"
-    - nodejs_version: "13"
+
+    - db: mysql
+      provider: mysql
+
+    - db: postgresql
+      provider: postgresql
+
+services:
+  - mysql               # start MySQL 5.6 service
+  - postgresql          # start PostgreSQL 9.5 service
 
 install:
   # запускаем SUT (запоминаем информацию о процессе в переменной $App)
   - ps: $App = Start-Process -FilePath java -ArgumentList "-jar ./artifacts/aqa-shop.jar" -PassThru
   # Get the latest stable version of Node 0.STABLE.latest
-  #- ps: Update-NodeJsInstallation
-  - IF %nodejs_version% EQU 0.8 npm config set strict-ssl false
-  - IF %nodejs_version% LSS 4 npm -g install npm@2
-  - IF %nodejs_version% EQU 5 npm -g install npm@3
-  - set PATH=%APPDATA%\npm;%PATH%
+
+  #- set PATH=%APPDATA%\npm;%PATH%
   # Typical npm stuff.
-  - npm install
-  - ps: $App = Start-Process -FilePath npm -ArgumentList "start" -PassThru
+  #- npm install
+  #- ps: $App = Start-Process -FilePath npm -ArgumentList "start" -PassThru
 
 build_script:
   - ps: ./gradlew test --info "-Dselenide.headless=true"  # стартуем Selenide в Headless-режиме (см.ниже)
