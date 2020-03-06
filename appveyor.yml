@@ -43,7 +43,7 @@ build_script:
   # запускаем SUT (запоминаем информацию о процессе в переменной $App)
 
 test_script:
-  - ps: ./gradlew test --info "-Dselenide.headless=true"  # стартуем Selenide в Headless-режиме (см.ниже)
+  #- ps: ./gradlew test --info "-Dselenide.headless=true"  # стартуем Selenide в Headless-режиме (см.ниже)
 
 on_finish:
   - ps: Stop-Process -Id $App.Id  # оставливаем SUT
