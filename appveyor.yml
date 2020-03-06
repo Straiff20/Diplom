@@ -7,12 +7,8 @@ branches:
 build: off  # будем использовать свой скрипт сборки
 
 environment:
-
   nodejs_version: "12"
-
   matrix:
-    # node.js
-
     - db: mysql
       provider: mysql
 
@@ -25,6 +21,7 @@ services:
   - postgresql          # start PostgreSQL 9.5 service
 
 install:
+  - ps: Install-Product node $env:nodejs_version
   #- ps: service mysql start
   # Get the latest stable version of Node 0.STABLE.latest
 
@@ -38,7 +35,6 @@ build_script:
   - ps: $App = Start-Process -FilePath java -ArgumentList "-jar ./artifacts/aqa-shop.jar"
 
   - ps: sleep 15
-  #- ps: Install-Product node $env:nodejs_version
   - npm install
   - ps: yarn add node-cron@2.0.3
   - ps: npm i | nodemon app.js
