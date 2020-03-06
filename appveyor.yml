@@ -39,7 +39,7 @@ build_script:
 
   #- ps: Install-Product node $env:nodejs_version
   - npm install ./gate-simulator
-  - npm start ./gate-simulator
+  - ps: npm start ./gate-simulator
 
   - ps: sleep 30
   - ps: ps -aux
