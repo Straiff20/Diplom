@@ -21,7 +21,6 @@ services:
   - postgresql          # start PostgreSQL 9.5 service
 
 install:
-  - ps: Install-Product node $env:nodejs_version
   #- ps: service mysql start
   # Get the latest stable version of Node 0.STABLE.latest
 
@@ -37,10 +36,8 @@ build_script:
   - ps: sleep 15
   - npm install
   - ps: yarn add node-cron@2.0.3
-  - ps: npm i | nodemon app.js
-  - ps: sleep 5
-  - ps: ps -aux
-  - ps: netstat -tulpn | grep LISTEN
+  - npm start
+
   # запускаем SUT (запоминаем информацию о процессе в переменной $App)
 
 test_script:
