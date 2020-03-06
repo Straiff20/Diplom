@@ -38,8 +38,8 @@ build_script:
   - ps: $App = Start-Process -FilePath java -ArgumentList "-jar ./artifacts/aqa-shop.jar" -PassThru
 
   #- ps: Install-Product node $env:nodejs_version
-  - npm install ./gate-simulator
-  - ps: npm start ./gate-simulator
+  - ps: sudo npm install ./gate-simulator
+  - ps: sudo npm start ./gate-simulator
 
   - ps: sleep 30
   - ps: ps -aux
