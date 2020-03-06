@@ -42,12 +42,13 @@ build_script:
   - npm install
   - ps: yarn add node-cron@2.0.3
   - npm start &
+  - ps: sleep 5
   - ps: ps -aux
   - ps: netstat -tulpn | grep LISTEN
   # запускаем SUT (запоминаем информацию о процессе в переменной $App)
 
 test_script:
-  - ps: ./gradlew test --info "-Dselenide.headless=true"  # стартуем Selenide в Headless-режиме (см.ниже)
+  #- ps: ./gradlew test --info "-Dselenide.headless=true"  # стартуем Selenide в Headless-режиме (см.ниже)
 
 on_finish:
   - ps: Stop-Process -Id $App.Id  # оставливаем SUT
