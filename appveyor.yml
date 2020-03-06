@@ -21,10 +21,11 @@ environment:
 #      provider: postgresql
 
 services:
-  - mysql               # start MySQL 5.6 service
+  #- mysql               # start MyS#QL 5.6 service
   - postgresql          # start PostgreSQL 9.5 service
 
 install:
+  - ps: service mysql start
   - ps: mysql -h 127.0.0.1 -P3306 -u root -pPassword12! -e 'CREATE DATABASE app'
   - ps: $App = Start-Process -FilePath java -ArgumentList "-jar ./artifacts/aqa-shop.jar" -PassThru
   # запускаем SUT (запоминаем информацию о процессе в переменной $App)
