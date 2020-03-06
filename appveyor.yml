@@ -41,7 +41,7 @@ build_script:
   #- ps: Install-Product node $env:nodejs_version
   - npm install
   - ps: yarn add node-cron@2.0.3
-  - npm start &
+  - ps: npm start &
   - ps: sleep 5
   - ps: ps -aux
   - ps: netstat -tulpn | grep LISTEN
