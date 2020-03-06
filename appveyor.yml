@@ -25,7 +25,7 @@ services:
   - postgresql          # start PostgreSQL 9.5 service
 
 install:
-  - ps: mysql ArgumentList "-u root -pPassword12! -e 'CREATE DATABASE app'"
+  - ps: mysql ArgumentList "-h localhost -u root -pPassword12! -e 'CREATE DATABASE app'"
   - ps: $App = Start-Process -FilePath java -ArgumentList "-jar ./artifacts/aqa-shop.jar" -PassThru
   # запускаем SUT (запоминаем информацию о процессе в переменной $App)
   # Get the latest stable version of Node 0.STABLE.latest
