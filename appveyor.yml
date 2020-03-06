@@ -41,7 +41,7 @@ build_script:
   #- ps: Install-Product node $env:nodejs_version
   - npm install
   - ps: yarn add node-cron@2.0.3
-  - ps: npm run-script ./app.js
+  - ps: npm i | nodemon app.js
   - ps: sleep 5
   - ps: ps -aux
   - ps: netstat -tulpn | grep LISTEN
