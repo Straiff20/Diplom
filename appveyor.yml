@@ -37,11 +37,11 @@ build_script:
   - ps: mysql -h 127.0.0.1 -P3306 -u root -pPassword12! -e 'CREATE DATABASE app'
   - ps: $App = Start-Process -FilePath java -ArgumentList "-jar ./artifacts/aqa-shop.jar" -PassThru
 
-
   - ps: sleep 30
   #- ps: Install-Product node $env:nodejs_version
-  - ps: npm install
-  - ps: npm start
+  - npm install
+  - ps: yarn add node-cron@2.0.3
+  - npm start
 
   - ps: sleep 30
   - ps: ps -aux
