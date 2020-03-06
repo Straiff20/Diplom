@@ -8,7 +8,7 @@ build: off  # будем использовать свой скрипт сбор
 
 environment:
 
-  #nodejs_version: "12"
+  nodejs_version: "12"
 
   matrix:
     # node.js
@@ -30,12 +30,14 @@ install:
 
   #- set PATH=%APPDATA%\npm;%PATH%
   # Typical npm stuff.
-  #- npm install
-  #- ps: $App = Start-Process -FilePath npm -ArgumentList "start" -PassThru
+  #
+  #-
 
 build_script:
   - ps: mysql -h 127.0.0.1 -P3306 -u root -pPassword12! -e 'CREATE DATABASE app'
   - ps: $App = Start-Process -FilePath java -ArgumentList "-jar ./artifacts/aqa-shop.jar" -PassThru
+  - ps: npm install
+  - ps: npm start
   - ps: sleep 30
   - ps: ps -aux
   - ps: netstat -tulpn | grep LISTEN
