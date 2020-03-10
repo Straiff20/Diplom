@@ -20,8 +20,8 @@ services:
 
 build_script:
   - ps: mysql -h 127.0.0.1 -P3306 -u root -pPassword12! -e 'CREATE DATABASE app'
-  - ps: java -Djava.net.preferIPv4Addresses=true
-  - ps: $App = Start-Process -FilePath java -ArgumentList "-jar ./artifacts/aqa-shop.jar -P:profile=test"
+  - ps: java
+  - ps: $App = Start-Process -FilePath java -ArgumentList "-jar -Djava.net.preferIPv4Addresses=true -P:profile=test ./artifacts/aqa-shop.jar"
 
   - ps: sleep 15
   - npm install
