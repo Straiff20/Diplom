@@ -19,7 +19,7 @@ services:
   - postgresql          # start PostgreSQL 9.5 service
 
 build_script:
-  - ps: curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+  - ps: curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-'uname -s'-'uname -m' -o /usr/local/bin/docker-compose
   - ps: chmod +x /usr/local/bin/docker-compose
   - ps: docker-compose version
 #  - ps: mysql -h 127.0.0.1 -P3306 -u root -pPassword12! -e 'CREATE DATABASE app'
