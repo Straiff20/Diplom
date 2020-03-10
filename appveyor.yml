@@ -29,7 +29,7 @@ build_script:
   - ps: sleep 10
   - ps: mysql -h 127.0.0.1 -P3306 -u root -pPassword12! -e 'SELECT * FROM app.credit_request_entity LIMIT 50'
   - ps: netstat -tulpn | grep LISTEN
-  #- ps: ./gradlew test --info "-Dselenide.headless=true"  # стартуем Selenide в Headless-режиме (см.ниже)
+  - ps: ./gradlew test --info "-Dselenide.headless=true"  # стартуем Selenide в Headless-режиме (см.ниже)
 
   # запускаем SUT (запоминаем информацию о процессе в переменной $App)
 
