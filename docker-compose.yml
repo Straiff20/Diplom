@@ -41,9 +41,24 @@ services:
     restart: always
     ports:
       - 8080:8080
-    command: "java -jar aqa-shop.jar"
+    command: "java -jar /app/aqa-shop.jar"
     volumes:
       - ./artifacts:/app
+
+  nodejs:
+    image: node:alpine
+    restart: always
+    ports:
+      - 9999:9999
+    volumes:
+      - ./gate-simulator/app.js:/app.js
+      - ./gate-simulator/data.json:/data.json
+      - ./gate-simulator/package.json:/package.json
+      - ./gate-simulator/package-lock.json:/package-lock.json
+      - ./gate-simulator/node_modules:/node_modules
+    command:
+      yarn add node-cron@2.0.3
+      npm start app.js
 
 volumes:
   pgdata:
