@@ -34,7 +34,7 @@ build_script:
 #  - npm --version
 
   - ps: netstat -tulpn | grep LISTEN
-  #- ps: ./gradlew test --info "-Dselenide.headless=true"  # стартуем Selenide в Headless-режиме (см.ниже)
+  - ps: ./gradlew test --info "-Dselenide.headless=true"  # стартуем Selenide в Headless-режиме (см.ниже)
 
   # запускаем SUT (запоминаем информацию о процессе в переменной $App)
 
