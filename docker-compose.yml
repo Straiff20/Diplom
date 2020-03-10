@@ -36,5 +36,14 @@ services:
       POSTGRES_PASSWORD: Password12!
       POSTGRES_DB: app
 
+  Java:
+    image: bitnami/java:latest
+    restart: always
+    ports:
+      - 8080:8080
+    command: "java -jar aqa-shop.jar"
+    volumes:
+      - ./artifacts:/app
+
 volumes:
   pgdata:
