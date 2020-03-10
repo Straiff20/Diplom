@@ -20,8 +20,8 @@ services:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: app
-      MYSQL_PASSWORD: pass
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Password12
       MYSQL_DATABASE: app
 
   Postgres:
@@ -32,9 +32,9 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: app
-      POSTGRES_PASSWORD: pass
-      POSTGRES_DB: app
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: Password12
+      POSTGRES_DB: root
 
 volumes:
   pgdata:
