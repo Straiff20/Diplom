@@ -5,11 +5,14 @@ branches:
     - master  # ветка git
 
 build: off  # будем использовать свой скрипт сборки
+build_cloud: docker
 
 environment:
-  nodejs_version: "12"
+
   matrix:
-    - db: mysql
+    - job_name: Node.js 12 tests
+      docker_image: node:12
+      db: mysql
       provider: mysql
 
 services:
@@ -18,12 +21,15 @@ services:
 
 build_script:
   - ps: mysql -h 127.0.0.1 -P3306 -u root -pPassword12! -e 'CREATE DATABASE app'
-  - ps: $App = Start-Process -FilePath java -ArgumentList "-jar -Djava.net.preferIPv4Addresses=true ./artifacts/aqa-shop.jar"
+  - ps: $App = Start-Process -FilePath java -ArgumentList "-jar ./artifacts/aqa-shop.jar"
   - ps: sleep 15
-  - npm install
-  - ps: yarn add node-cron@2.0.3
-  - ps: Start-Process -FilePath npm -ArgumentList "start"
+  #- npm install
+  #- ps: yarn add node-cron@2.0.3
+  #- ps: Start-Process -FilePath npm -ArgumentList "start"
   - ps: sleep 10
+
+  - node --version
+  - npm --version
 
   - ps: netstat -tulpn | grep LISTEN
   #- ps: ./gradlew test --info "-Dselenide.headless=true"  # стартуем Selenide в Headless-режиме (см.ниже)
