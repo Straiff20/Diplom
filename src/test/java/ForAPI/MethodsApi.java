@@ -14,7 +14,7 @@ public class MethodsApi {
     public static final int credit = 1;
 
     private static RequestSpecification requestSpec = new RequestSpecBuilder()
-            .setBaseUri("http://127.0.0.1")
+            .setBaseUri("http://::")
             .setPort(9999)
             .setAccept(ContentType.JSON)
             .setContentType(ContentType.JSON)
