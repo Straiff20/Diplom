@@ -27,7 +27,7 @@ build_script:
   - ps: yarn add node-cron@2.0.3
   - ps: Start-Process -FilePath npm -ArgumentList "start"
   - ps: sleep 10
-  - ps: mysql -h 127.0.0.1 -P3306 -u root -pPassword12! -e 'SELECT * FROM credit_request_entity LIMIT 50'
+  - ps: mysql -h 127.0.0.1 -P3306 -u root -pPassword12! -e 'SELECT * FROM app.credit_request_entity LIMIT 50'
   - ps: netstat -tulpn | grep LISTEN
   #- ps: ./gradlew test --info "-Dselenide.headless=true"  # стартуем Selenide в Headless-режиме (см.ниже)
 
