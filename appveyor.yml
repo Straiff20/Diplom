@@ -5,7 +5,6 @@ branches:
     - master  # ветка git
 
 build: off  # будем использовать свой скрипт сборки
-build_cloud: docker
 
 environment:
 
