@@ -20,7 +20,7 @@ services:
 
 build_script:
   - ps: mysql -h 127.0.0.1 -P3306 -u root -pPassword12! -e 'CREATE DATABASE app'
-  - ps: export _JAVA_OPTIONS="-Djava.net.preferIPv4Stack=true"
+  - ps: -Djava.net.preferIPv4Addresses=true
   - ps: $App = Start-Process -FilePath java -ArgumentList "-jar ./artifacts/aqa-shop.jar -P:profile=test"
 
   - ps: sleep 15
