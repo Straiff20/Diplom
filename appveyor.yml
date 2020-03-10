@@ -16,7 +16,7 @@ services:
   - mysql               # start MyS#QL 5.6 service
   - postgresql          # start PostgreSQL 9.5 service
 
-install:
+build_script:
   - ps: mysql -h 127.0.0.1 -P3306 -u root -pPassword12! -e 'CREATE DATABASE app'
   - ps: $App = Start-Process -FilePath java -ArgumentList "-jar -Djava.net.preferIPv4Addresses=true ./artifacts/aqa-shop.jar"
   - ps: sleep 15
@@ -24,8 +24,6 @@ install:
   - ps: yarn add node-cron@2.0.3
   - ps: Start-Process -FilePath npm -ArgumentList "start"
   - ps: sleep 10
-
-build_script:
 
   - ps: netstat -tulpn | grep LISTEN
   #- ps: ./gradlew test --info "-Dselenide.headless=true"  # стартуем Selenide в Headless-режиме (см.ниже)
