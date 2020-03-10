@@ -19,7 +19,7 @@ services:
   - postgresql          # start PostgreSQL 9.5 service
 
 build_script:
-  - ps: sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-'uname -s'-'uname -m' -o /usr/local/bin/docker-compose
+  - ps: sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
   - ps: sleep 30
   - ps: sudo chmod +x /usr/local/bin/docker-compose
   - ps: sudo docker-compose up -d
