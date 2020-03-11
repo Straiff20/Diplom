@@ -23,42 +23,52 @@ services:
       MYSQL_USER: app
       MYSQL_PASSWORD: pass
       MYSQL_DATABASE: app
+#    networks:
+#      - app-network
+  #  Postgres:
+#    image: postgres:12.0-alpine
+#    restart: always
+#    ports:
+#      - 5432:5432
+#    volumes:
+#      - pgdata:/var/lib/postgresql/data
+#    environment:
+#      POSTGRES_USER: root
+#      POSTGRES_PASSWORD: Password12!
+#      POSTGRES_DB: app
 
-  Postgres:
-    image: postgres:12.0-alpine
-    restart: always
-    ports:
-      - 5432:5432
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: Password12!
-      POSTGRES_DB: app
-
-  Java:
-    image: bitnami/java:latest
-    restart: always
-    ports:
-      - 8080:8080
-    command: "java -jar /app/aqa-shop.jar"
-    volumes:
-      - ./artifacts:/app
 
   nodejs:
-    image: node:alpine
-    restart: always
+    image: node:12.16.0
+    #restart: always
     ports:
       - 9999:9999
     volumes:
       - ./gate-simulator/app.js:/app.js
       - ./gate-simulator/data.json:/data.json
       - ./gate-simulator/package.json:/package.json
-      - ./gate-simulator/package-lock.json:/package-lock.json
+      #      - ./gate-simulator/package-lock.json:/package-lock.json
       - ./gate-simulator/node_modules:/node_modules
     command:
       yarn add node-cron@2.0.3
       npm start app.js
+
+  Java:
+    image: bitnami/java:13.0.1
+    #restart: always
+    ports:
+      - 8080:8080
+    command: "java -jar /app/aqa-shop.jar"
+    volumes:
+      - ./artifacts:/app
+      - ./application.properties:/application.properties
+#    networks:
+#      - app-network
+
+
+#networks:
+#  app-network:
+#    driver: bridge
 
 volumes:
   pgdata:
