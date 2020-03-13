@@ -6,6 +6,11 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class Constant {
+    // Карты
+    static final String approvedCardNumber = "4444 4444 4444 4441";
+    static final String declinedCardNumber = "4444 4444 4444 4442";
+    static final String unknownCardNumber = "1111 1111 1111 1111";
+
     //  Начальная страница
     static final SelenideElement TITLE = $(byText("Путешествие дня"));
     static final SelenideElement PROMO_PHOTO = $(".Order_cardImage__Q69ii");

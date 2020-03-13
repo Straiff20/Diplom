@@ -14,13 +14,13 @@ public class TravelOfDayPageObject {
         Constant.CREDIT_BUTTON.isDisplayed();
     }
 
-    public AfterChoosePaymentPageObject paymentButtonClick() {
+    public AfterChoosePageObject paymentButtonClick() {
         Constant.PAYMENT_BUTTON.click();
-        return new AfterChoosePaymentPageObject(AfterChoosePaymentPageObject.DebitCard);
+        return new AfterChoosePageObject(AfterChoosePageObject.payment);
     }
 
-    public AfterChoosePaymentPageObject creditButtonClick() {
+    public AfterChoosePageObject creditButtonClick() {
         Constant.CREDIT_BUTTON.click();
-        return new AfterChoosePaymentPageObject(AfterChoosePaymentPageObject.CreditCard);
+        return new AfterChoosePageObject(AfterChoosePageObject.credit);
     }
 }
