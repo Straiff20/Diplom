@@ -50,7 +50,7 @@ services:
     image: bitnami/java:13.0.1
     ports:
       - 8080:8080
-    command: sleep:20
+    command: "sleep 20"
     "java -jar /app/aqa-shop.jar"
     volumes:
       - ./artifacts:/app
