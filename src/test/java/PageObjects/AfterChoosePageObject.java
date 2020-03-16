@@ -8,7 +8,12 @@ public class AfterChoosePageObject extends TravelOfDayPageObject {
     public static final int payment = 0;
     public static final int credit = 1;
 
+    public static final int approvedCard = 0;
+    public static final int declinedCard = 1;
+    public static final int unknownCardNumber = 2;
+
     int type;
+    int typeCard;
 
     public AfterChoosePageObject(int type) {
         super();
@@ -31,8 +36,16 @@ public class AfterChoosePageObject extends TravelOfDayPageObject {
         Constant.CONTINUE_BUTTON.isDisplayed();
     }
 
-    public void setFields() {
-        Constant.CARD_NUMBER_INPUT.setValue(Constant.approvedCardNumber);
+    //TODO: заменить на константы
+    public void setFields(int typeCard) {
+        if (typeCard == approvedCard) {
+            Constant.CARD_NUMBER_INPUT.setValue(Constant.APPROVED_CARD_NUMBER);
+        } else if (typeCard == declinedCard) {
+            Constant.CARD_NUMBER_INPUT.setValue(Constant.DECLINED_CARD_NUMBER);
+        } else if (typeCard == unknownCardNumber) {
+            Constant.CARD_NUMBER_INPUT.setValue((Constant.UNKNOWN_CARD_NUMBER));
+        }
+        Constant.CARD_NUMBER_INPUT.setValue(Constant.APPROVED_CARD_NUMBER);
         Constant.MONTH_INPUT.setValue(DataInfo.getRandomMonth());
         Constant.YEAR_INPUT.setValue(DataInfo.getRandomYear());
         Constant.OWNER_INPUT.setValue(DataInfo.getRandomOwner());

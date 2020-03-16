@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.util.Properties;
 
 public class SQLRequests {
-    public static String getCreditStatus(String id) throws Exception {
+    public static String getCreditStatus() throws Exception {
         File file = new File("./application.properties");
         Properties properties = new Properties();
         properties.load(new FileReader(file));
