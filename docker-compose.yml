@@ -20,17 +20,18 @@ services:
       MYSQL_PASSWORD: pass
       MYSQL_DATABASE: app
 
-#  Postgres:
-#    image: postgres:12.0-alpine
-#    restart: always
-#    ports:
-#      - 5432:5432
-#    volumes:
-#      - pgdata:/var/lib/postgresql/data
-#    environment:
-#      POSTGRES_USER: root
-#      POSTGRES_PASSWORD: Password12!
-#      POSTGRES_DB: app
+  Postgres:
+    image: postgres:12.0-alpine
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      MYSQL_ROOT_PASSWORD: Password12!
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: app
 
 
   nodejs:

@@ -20,15 +20,15 @@ public class DataInfo {
     public static String getRandomMonth() {
         String[] months = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
         Random random = new Random();
-        int index = random.nextInt(months.length);
-        return months[index];
+        int i = random.nextInt(months.length);
+        return months[i];
     }
 
     public static String getRandomYear() {
         String[] years = {"20", "21", "22", "23"};
         Random random = new Random();
-        int index = random.nextInt(years.length);
-        return years[index];
+        int i = random.nextInt(years.length);
+        return years[i];
     }
 
     public static String getRandomOwner() {

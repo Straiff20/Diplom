@@ -12,26 +12,21 @@ public class SQLRequests {
         Properties properties = new Properties();
         properties.load(new FileReader(file));
 
-        String selectStatus = "SELECT * FROM credit_request_entity STATUS by created DESC LIMIT 1";
+        String[] parts = properties.getProperty("spring.datasource.url").split(":");
+        parts[2] = "//localhost";
+        String url = String.join(":", parts);
 
-        if (properties.getProperty("spring.datasource.url").equals("jdbc:mysql://localhost:3306/app")) {
-            try (
-                    Connection conn = DriverManager.getConnection("http://localhost:3306", "app", "pass");
-                    PreparedStatement cardStatusRequest = conn.prepareStatement(selectStatus)
-            ) {
-                ResultSet cardStatus = cardStatusRequest.executeQuery();
-                return cardStatus.getString("status");
-            }
-        } else if (properties.getProperty("spring.datasource.url").equals("jdbc:postgresql://localhost:5432/app")) {
-            try (
-                    Connection conn = DriverManager.getConnection("http://localhost:5432", "app", "pass");
-                    PreparedStatement cardStatusRequest = conn.prepareStatement(selectStatus)
-            ) {
-                ResultSet cardStatus = cardStatusRequest.executeQuery();
-                return cardStatus.getString("status");
-            }
-        } else {
-            throw new Exception();
+        String selectStatus = "SELECT * FROM credit_request_entity ORDER BY created DESC LIMIT 1";
+
+        try (
+                Connection conn = DriverManager.getConnection(url,
+                        properties.getProperty("spring.datasource.username"),
+                        properties.getProperty("spring.datasource.password"));
+                PreparedStatement cardStatusRequest = conn.prepareStatement(selectStatus);
+        ) {
+            ResultSet cardStatus = cardStatusRequest.executeQuery();
+            cardStatus.next();
+            return cardStatus.getString("status");
         }
     }
 
@@ -40,26 +35,21 @@ public class SQLRequests {
         Properties properties = new Properties();
         properties.load(new FileReader(file));
 
-        String selectStatus = "SELECT * FROM payment_entity STATUS by created DESC LIMIT 1";
+        String[] parts = properties.getProperty("spring.datasource.url").split(":");
+        parts[2] = "//localhost";
+        String url = String.join(":", parts);
 
-        if (properties.getProperty("spring.datasource.url").equals("jdbc:mysql://localhost:3306/app")) {
-            try (
-                    Connection conn = DriverManager.getConnection("http://localhost:3306", "app", "pass");
-                    PreparedStatement cardStatusRequest = conn.prepareStatement(selectStatus)
-            ) {
-                ResultSet cardStatus = cardStatusRequest.executeQuery();
-                return cardStatus.getString("status");
-            }
-        } else if (properties.getProperty("spring.datasource.url").equals("jdbc:postgresql://localhost:5432/app")) {
-            try (
-                    Connection conn = DriverManager.getConnection("http://localhost:5432", "app", "pass");
-                    PreparedStatement cardStatusRequest = conn.prepareStatement(selectStatus)
-            ) {
-                ResultSet cardStatus = cardStatusRequest.executeQuery();
-                return cardStatus.getString("status");
-            }
-        } else {
-            throw new Exception();
+        String selectStatus = "SELECT * FROM payment_entity ORDER BY created DESC LIMIT 1";
+
+        try (
+                Connection conn = DriverManager.getConnection(url,
+                        properties.getProperty("spring.datasource.username"),
+                        properties.getProperty("spring.datasource.password"));
+                PreparedStatement cardStatusRequest = conn.prepareStatement(selectStatus);
+        ) {
+            ResultSet cardStatus = cardStatusRequest.executeQuery();
+            cardStatus.next();
+            return cardStatus.getString("status");
         }
     }
 }
