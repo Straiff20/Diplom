@@ -8,14 +8,6 @@ import java.util.Random;
 public class DataInfo {
     private DataInfo() {
     }
-    //  Получить поля
-    public static CardFields getCardFields() {
-        String month = getRandomMonth();
-        String year = getRandomYear();
-        String owner = getRandomOwner();
-        String cvcCode = getRandomCVCCode();
-        return new CardFields(month, year, owner, cvcCode);
-    }
 
     public static String getRandomMonth() {
         String[] months = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
@@ -36,7 +28,7 @@ public class DataInfo {
         return faker.name().firstName() + " " + faker.name().lastName();
     }
 
-    public static String getRandomCVCCode() {
+    public static String getRandomCvcCode() {
         Random random = new Random();
         int rnd = random.nextInt(900) + 100;
         return Integer.toString(rnd);

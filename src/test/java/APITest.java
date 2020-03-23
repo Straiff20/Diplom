@@ -16,7 +16,7 @@ public class APITest {
                 Integer.parseInt(DataInfo.getRandomMonth()),
                 Integer.parseInt(DataInfo.getRandomYear()),
                 DataInfo.getRandomOwner(),
-                Integer.parseInt(DataInfo.getRandomCVCCode()));
+                Integer.parseInt(DataInfo.getRandomCvcCode()));
 
         ValidatableResponse response = MethodsApi.payRequest(fieldsApiDTO, typeConnection);
         response.statusCode(statusCode);

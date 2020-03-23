@@ -66,7 +66,7 @@ public class TravelOfDayPageObject {
         Constant.OWNER_INPUT.click();
         Constant.OWNER_INPUT.sendKeys(DataInfo.getRandomOwner());
         Constant.CVC_CODE_INPUT.click();
-        Constant.CVC_CODE_INPUT.sendKeys(DataInfo.getRandomCVCCode());
+        Constant.CVC_CODE_INPUT.sendKeys(DataInfo.getRandomCvcCode());
         return this;
     }
 
