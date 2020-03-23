@@ -18,16 +18,16 @@ public class SQLRequests {
 
         String selectStatus = "SELECT * FROM credit_request_entity ORDER BY created DESC LIMIT 1";
 
-        try (
-                Connection conn = DriverManager.getConnection(url,
-                        properties.getProperty("spring.datasource.username"),
-                        properties.getProperty("spring.datasource.password"));
-                PreparedStatement cardStatusRequest = conn.prepareStatement(selectStatus);
-        ) {
-            ResultSet cardStatus = cardStatusRequest.executeQuery();
-            cardStatus.next();
-            return cardStatus.getString("status");
-        }
+
+        Connection conn = DriverManager.getConnection(url,
+                properties.getProperty("spring.datasource.username"),
+                properties.getProperty("spring.datasource.password"));
+        PreparedStatement cardStatusRequest = conn.prepareStatement(selectStatus);
+
+        ResultSet cardStatus = cardStatusRequest.executeQuery();
+        cardStatus.next();
+        return cardStatus.getString("status");
+
     }
 
     public static String getPaymentStatus() throws Exception {
@@ -41,15 +41,14 @@ public class SQLRequests {
 
         String selectStatus = "SELECT * FROM payment_entity ORDER BY created DESC LIMIT 1";
 
-        try (
-                Connection conn = DriverManager.getConnection(url,
-                        properties.getProperty("spring.datasource.username"),
-                        properties.getProperty("spring.datasource.password"));
-                PreparedStatement cardStatusRequest = conn.prepareStatement(selectStatus);
-        ) {
-            ResultSet cardStatus = cardStatusRequest.executeQuery();
-            cardStatus.next();
-            return cardStatus.getString("status");
-        }
+
+        Connection conn = DriverManager.getConnection(url,
+                properties.getProperty("spring.datasource.username"),
+                properties.getProperty("spring.datasource.password"));
+        PreparedStatement cardStatusRequest = conn.prepareStatement(selectStatus);
+
+        ResultSet cardStatus = cardStatusRequest.executeQuery();
+        cardStatus.next();
+        return cardStatus.getString("status");
     }
 }
