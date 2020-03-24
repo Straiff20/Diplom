@@ -19,7 +19,7 @@ public class TravelOfDayPageObject {
 
     public TravelOfDayPageObject() {
         open("http://localhost:8080/");
-        Constant.TITLE.waitUntil(Condition.visible, 10000);
+        Constant.TITLE.waitUntil(Condition.visible, 11000);
         Constant.PROMO_PHOTO.isDisplayed();
         Constant.COUNTRY.isDisplayed();
         Constant.PAYMENT_BUTTON.isDisplayed();
@@ -29,7 +29,6 @@ public class TravelOfDayPageObject {
     public void choosePayMethod(int type) {
         this.type = type;
 
-//        Constant.PAYMENT_CARD_TITLE.waitUntil(Condition.visible, 10000);
         if (this.type == PAYMENT) {
             //проверить заголовок (Оплата по карте)
             Constant.PAYMENT_CARD_TITLE.shouldHave(Condition.text("Оплата по карте"));
