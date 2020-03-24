@@ -33,8 +33,9 @@ public class Constant {
     public static final SelenideElement NOTIFICATION_STATUS_ERROR = $(".notification_status_error");
 
     public static final SelenideElement CARD_NUMBER_FIELD_ERROR = $("div:nth-child(1) > span > span > span.input__sub");
-    public static final SelenideElement MOTH_FIELD_ERROR = $("div:nth-child(2) > span > span:nth-child(1) > span > span > span.input__sub");
+    public static final SelenideElement MONTH_FIELD_ERROR = $("div:nth-child(2) > span > span:nth-child(1) > span > span > span.input__sub");
     public static final SelenideElement YEAR_FIELD_ERROR_UNKNOWN_FORMAT = $("div:nth-child(2) > span > span:nth-child(2) > span > span > span.input__sub");
+    public static final SelenideElement YEAR_FIELD_DATE_VALIDATE_ERROR = $(byText("Истёк срок действия карты"));
     public static final SelenideElement OWNER_FIELD_ERROR = $(byText("Поле обязательно для заполнения"));
     public static final SelenideElement CVC_FIELD_ERROR = $("div:nth-child(3) > span > span:nth-child(2) > span > span > span.input__sub");
 }

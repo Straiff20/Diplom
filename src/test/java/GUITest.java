@@ -1,13 +1,12 @@
+import Data.DataInfo;
+import Data.InvalidDataInfo;
 import PageObjects.Constant;
 import PageObjects.TravelOfDayPageObject;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Description;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -17,6 +16,12 @@ public class GUITest {
     @BeforeAll
     static void setUpAll() {
         SelenideLogger.addListener("allure", new AllureSelenide().screenshots(true));
+    }
+
+    @BeforeEach
+    @DisplayName("Clear base table")
+    void cleanTable() throws Exception {
+        SQLRequests.clearTables();
     }
 
     @AfterAll
@@ -80,7 +85,7 @@ public class GUITest {
                 .paymentButtonClick();
         Constant.CONTINUE_BUTTON.click();
         Constant.CARD_NUMBER_FIELD_ERROR.isDisplayed();
-        Constant.MOTH_FIELD_ERROR.isDisplayed();
+        Constant.MONTH_FIELD_ERROR.isDisplayed();
         Constant.YEAR_FIELD_ERROR_UNKNOWN_FORMAT.isDisplayed();
         Constant.OWNER_FIELD_ERROR.isDisplayed();
         Constant.CVC_FIELD_ERROR.isDisplayed();
@@ -94,9 +99,27 @@ public class GUITest {
                 .creditButtonClick();
         Constant.CONTINUE_BUTTON.click();
         Constant.CARD_NUMBER_FIELD_ERROR.isDisplayed();
-        Constant.MOTH_FIELD_ERROR.isDisplayed();
+        Constant.MONTH_FIELD_ERROR.isDisplayed();
         Constant.YEAR_FIELD_ERROR_UNKNOWN_FORMAT.isDisplayed();
         Constant.OWNER_FIELD_ERROR.isDisplayed();
+        Constant.CVC_FIELD_ERROR.isDisplayed();
+    }
+
+    @DisplayName("Wrong format to valid date fields")
+    @Description("Set past year and unreal month")
+    @Test
+    void invalidDateFieldsPaymentCheck() {
+        TravelOfDayPageObject travel = new TravelOfDayPageObject()
+                .paymentButtonClick();
+        Constant.CARD_NUMBER_INPUT.sendKeys(InvalidDataInfo.CardFields.getUnknownFormatCardNumber());
+        Constant.MONTH_INPUT.sendKeys(InvalidDataInfo.CardFields.getInvalidMonth());
+        Constant.YEAR_INPUT.sendKeys(InvalidDataInfo.CardFields.getPastYear());
+        Constant.OWNER_INPUT.sendKeys(DataInfo.getRandomOwner());
+        Constant.CVC_CODE_INPUT.sendKeys(InvalidDataInfo.CardFields.getInvalidCvcCode());
+        Constant.CONTINUE_BUTTON.click();
+        Constant.CARD_NUMBER_FIELD_ERROR.isDisplayed();
+        Constant.MONTH_FIELD_ERROR.isDisplayed();
+        Constant.YEAR_FIELD_DATE_VALIDATE_ERROR.isDisplayed();
         Constant.CVC_FIELD_ERROR.isDisplayed();
     }
 }
