@@ -4,12 +4,20 @@ import ForAPI.MethodsApi;
 import io.qameta.allure.Issue;
 import io.restassured.matcher.ResponseAwareMatcher;
 import io.restassured.response.ValidatableResponse;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
 import static org.hamcrest.Matchers.equalTo;
 
 public class APITest {
+    @BeforeEach
+    @DisplayName("Clear base table")
+    void cleanTable() throws Exception {
+        SQLRequests.clearTables();
+    }
+
     @Issue("4")
     @ParameterizedTest
     @CsvFileSource(resources = "/RequestDataApi.csv", numLinesToSkip = 1)
