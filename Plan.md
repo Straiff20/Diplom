@@ -68,6 +68,8 @@
         ````
         gradlew allureServe
         ````
+1. Для переключения между базами необходимо закоментарить или раскоментарить
+нужную строку в файле [application.properties](https://github.com/Straiff20/Diplom/blob/master/application.properties)
 ### Перечень автоматизируемых сценариев
 
 #### Позитивные сценарии
