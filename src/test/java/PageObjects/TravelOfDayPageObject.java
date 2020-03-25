@@ -19,7 +19,7 @@ public class TravelOfDayPageObject {
 
     public TravelOfDayPageObject() {
         open("http://localhost:8080/");
-        Constant.TITLE.waitUntil(Condition.visible, 11000);
+        Constant.TITLE.waitUntil(Condition.visible, 15000);
         Constant.PROMO_PHOTO.isDisplayed();
         Constant.COUNTRY.isDisplayed();
         Constant.PAYMENT_BUTTON.isDisplayed();

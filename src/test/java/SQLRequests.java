@@ -16,7 +16,7 @@ public class SQLRequests {
         parts[2] = "//localhost";
         String url = String.join(":", parts);
 
-        String selectStatus = "SELECT * FROM payment_entity ORDER BY created DESC LIMIT 1";
+        String selectStatus = "SELECT status FROM payment_entity";
 
         Connection conn = DriverManager.getConnection(url,
                 properties.getProperty("spring.datasource.username"),
@@ -37,7 +37,7 @@ public class SQLRequests {
         parts[2] = "//localhost";
         String url = String.join(":", parts);
 
-        String selectStatus = "SELECT * FROM credit_request_entity ORDER BY created DESC LIMIT 1";
+        String selectStatus = "SELECT status FROM credit_request_entity";
 
         Connection conn = DriverManager.getConnection(url,
                 properties.getProperty("spring.datasource.username"),

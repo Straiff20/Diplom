@@ -38,7 +38,7 @@ public class GUITest {
                 .paymentButtonClick()
                 .setFields(cardNumber);
         Constant.CONTINUE_BUTTON.click();
-        Constant.NOTIFICATION_STATUS_OK.waitUntil(Condition.visible, 11000);
+        Constant.NOTIFICATION_STATUS_OK.waitUntil(Condition.visible, 15000);
         assertEquals(SQLRequests.getPaymentStatus(), baseStatus);
     }
 
@@ -51,7 +51,7 @@ public class GUITest {
                 .creditButtonClick()
                 .setFields(cardNumber);
         Constant.CONTINUE_BUTTON.click();
-        Constant.NOTIFICATION_STATUS_OK.waitUntil(Condition.visible, 11000);
+        Constant.NOTIFICATION_STATUS_OK.waitUntil(Condition.visible, 15000);
         assertEquals(SQLRequests.getCreditStatus(), baseStatus);
     }
 
@@ -63,7 +63,7 @@ public class GUITest {
                 .paymentButtonClick()
                 .setFields(2);
         Constant.CONTINUE_BUTTON.click();
-        Constant.NOTIFICATION_STATUS_ERROR.waitUntil(Condition.visible, 11000);
+        Constant.NOTIFICATION_STATUS_ERROR.waitUntil(Condition.visible, 15000);
     }
 
     @DisplayName("By to credit with unknown card")
@@ -74,7 +74,7 @@ public class GUITest {
                 .creditButtonClick()
                 .setFields(2);
         Constant.CONTINUE_BUTTON.click();
-        Constant.NOTIFICATION_STATUS_ERROR.waitUntil(Condition.visible, 11000);
+        Constant.NOTIFICATION_STATUS_ERROR.waitUntil(Condition.visible, 15000);
     }
 
     @DisplayName("Empty fields payment form")
