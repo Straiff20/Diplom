@@ -1,18 +1,18 @@
-## Отчет о проведенном тестировании
+## Отчёт о проведённом тестировании
 
-В ходе проведения тестирования было выявленно несколько ошибок:
+В ходе проведения тестирования было выявлено несколько ошибок:
 
-[Выявленые ошибки](https://github.com/Straiff20/Diplom/issues)
+[Выявленные ошибки](https://github.com/Straiff20/Diplom/issues)
 
 Итоги автоматического тестирования:
 
-[Отчет Gradle](https://github.com/Straiff20/Diplom/issues/9)
+[Отчёт Gradle](https://github.com/Straiff20/Diplom/issues/9)
 
-[Отчет Allure](https://github.com/Straiff20/Diplom/issues/10)
+[Отчёт Allure](https://github.com/Straiff20/Diplom/issues/10)
 
-[Отчет Appveyor](https://ci.appveyor.com/project/Straiff20/diplom)
+[Отчёт Appveyor](https://ci.appveyor.com/project/Straiff20/diplom)
 
 ### Рекомендации:
-* Исправить выявленые ошибки
+* Исправить выявленные ошибки
 * Написать документацию для технической и пользовательской части
-* После исправлений отдать на повторное тестирвоание
+* После исправлений отдать на повторное тестирование
