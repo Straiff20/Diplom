@@ -30,10 +30,8 @@ public class TravelOfDayPageObject {
         this.type = type;
 
         if (this.type == PAYMENT) {
-            //проверить заголовок (Оплата по карте)
             Constant.PAYMENT_CARD_TITLE.shouldHave(Condition.text("Оплата по карте"));
         } else if (this.type == CREDIT) {
-            //проверить заголовок (Кредит по данным карты)
             Constant.CREDIT_CARD_TITLE.shouldHave(Condition.text("Кредит по данным карты"));
         }
 

@@ -31,6 +31,5 @@ public class APITest {
         ValidatableResponse response = MethodsApi.payRequest(fieldsApiDTO, typeConnection);
         response.statusCode(statusCode);
         response.body("status", (ResponseAwareMatcher) response1 -> equalTo(status));
-//        response.body("status", (ResponseAwareMatcher) response12 -> equalTo(QuerySQL.getStatusFromMySQL(response12.path("id"))));
     }
 }

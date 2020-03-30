@@ -23,11 +23,11 @@ public class Constant {
     public static final SelenideElement PAYMENT_CARD_TITLE = $$(".heading").find(Condition.exactText("Оплата по карте"));
 
     public static final SelenideElement CARD_NUMBER_INPUT = $("[placeholder='0000 0000 0000 0000']");
-    public static final SelenideElement MONTH_INPUT = $("div:nth-child(2) > span > span:nth-child(1) > span > span > span.input__box > input");
-    public static final SelenideElement YEAR_INPUT = $("div:nth-child(2) > span > span:nth-child(2) > span > span > span.input__box > input");
+    public static final SelenideElement MONTH_INPUT = $("[placeholder='08']");
+    public static final SelenideElement YEAR_INPUT = $("[placeholder='22']");
     public static final SelenideElement OWNER_INPUT = $("div:nth-child(3) > span > span:nth-child(1) > span > span > span.input__box > input");
-    public static final SelenideElement CVC_CODE_INPUT = $("div:nth-child(3) > span > span:nth-child(2) > span > span > span.input__box > input");
-    public static final SelenideElement CONTINUE_BUTTON = $("#root > div > form > fieldset > div:nth-child(4) > button");
+    public static final SelenideElement CVC_CODE_INPUT = $("[placeholder='999']");
+    public static final SelenideElement CONTINUE_BUTTON = $$("button").find(Condition.exactText("Продолжить"));;
 
     public static final SelenideElement NOTIFICATION_STATUS_OK = $(".notification_status_ok");
     public static final SelenideElement NOTIFICATION_STATUS_ERROR = $(".notification_status_error");
